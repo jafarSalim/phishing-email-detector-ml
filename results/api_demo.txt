@@ -1,0 +1,75 @@
+$ curl -s localhost:8000/health
+{"ok":true,"model":"phishguard 1.0.0","threshold":0.5}
+
+$ curl -s --data-binary @examples/synthetic_phish.eml localhost:8000/scan | python3 -m json.tool
+{
+    "score": 0.9876108091146247,
+    "score_features": 0.9999979104955219,
+    "score_text": 0.9752237077337277,
+    "reasons": [
+        {
+            "feature": "html_text_ratio",
+            "description": "HTML size relative to visible text",
+            "value": 2.0193548387096776,
+            "contribution": 6.409301552318378
+        },
+        {
+            "feature": "hidden_text",
+            "description": "hidden text (display:none / size 0)",
+            "value": 1.0,
+            "contribution": 4.33266157636808
+        },
+        {
+            "feature": "urgent_words",
+            "description": "urgency wording",
+            "value": 10.0,
+            "contribution": 2.7906324556940847
+        },
+        {
+            "feature": "n_anchor_links",
+            "description": "number of HTML links",
+            "value": 1.0,
+            "contribution": 1.566728551880167
+        },
+        {
+            "feature": "html_only",
+            "description": "HTML with no plain-text part",
+            "value": 1.0,
+            "contribution": 1.3101025829540778
+        },
+        {
+            "feature": "return_path_differs",
+            "description": "Return-Path on another domain",
+            "value": 0.0,
+            "contribution": 1.180808966658699
+        }
+    ],
+    "words": [
+        {
+            "term": "your",
+            "contribution": 0.6808057275251476
+        },
+        {
+            "term": "account",
+            "contribution": 0.5101112019997319
+        },
+        {
+            "term": "your account",
+            "contribution": 0.3681093280368057
+        },
+        {
+            "term": "https",
+            "contribution": 0.310944194294571
+        },
+        {
+            "term": "urgent",
+            "contribution": 0.20374792325218782
+        }
+    ],
+    "verdict": "phishing",
+    "model": "phishguard 1.0.0"
+}
+
+$ java -cp out io.github.jafarsalim.phishguard.PhishGuardClient http://localhost:8000 examples/*.eml
+legitimate  0.361  synthetic_ham.eml  | HTML size relative to visible text; Return-Path on another domain; length in words
+phishing    0.988  synthetic_phish.eml  | HTML size relative to visible text; hidden text (display:none / size 0); urgency wording

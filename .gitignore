@@ -1,0 +1,5 @@
+data/
+__pycache__/
+.pytest_cache/
+out/
+figures/_frames/

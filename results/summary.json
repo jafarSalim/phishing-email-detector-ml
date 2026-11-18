@@ -1,0 +1,210 @@
+{
+ "shortcut": {
+  "date year only": {
+   "auc": 0.997,
+   "acc": 0.9986
+  },
+  "header shortcuts (no date)": {
+   "auc": 0.9989,
+   "acc": 0.9992
+  },
+  "content features (this project)": {
+   "auc": 0.9995,
+   "acc": 0.9932
+  }
+ },
+ "cv": [
+  {
+   "model": "features",
+   "auc": 0.9995,
+   "auc_ci": [
+    0.9990433744510955,
+    0.9997561716949939
+   ],
+   "ap": 0.9989,
+   "f1": 0.9884,
+   "precision": 0.9911,
+   "recall": 0.9858,
+   "fpr": 0.0041,
+   "fpr_hard": 0.0343,
+   "fpr_easy": 0.0009
+  },
+  {
+   "model": "text",
+   "auc": 0.9995,
+   "auc_ci": [
+    0.9989914520393746,
+    0.9998176028334906
+   ],
+   "ap": 0.999,
+   "f1": 0.9893,
+   "precision": 0.9919,
+   "recall": 0.9867,
+   "fpr": 0.0037,
+   "fpr_hard": 0.0343,
+   "fpr_easy": 0.0005
+  },
+  {
+   "model": "combined",
+   "auc": 0.9999,
+   "auc_ci": [
+    0.9997092967865999,
+    0.999950761650847
+   ],
+   "ap": 0.9997,
+   "f1": 0.9902,
+   "precision": 0.9911,
+   "recall": 0.9893,
+   "fpr": 0.0041,
+   "fpr_hard": 0.0343,
+   "fpr_easy": 0.0009
+  }
+ ],
+ "top_features": [
+  "html_text_ratio",
+  "html_only",
+  "return_path_differs",
+  "hidden_text",
+  "urgent_words",
+  "auth_fail",
+  "n_anchor_links",
+  "url_max_len",
+  "url_max_dots",
+  "n_urls"
+ ],
+ "ablation": [
+  {
+   "removed": "all",
+   "auc": 0.9994,
+   "recall_at_1pct_fpr": 0.9929
+  },
+  {
+   "removed": "links",
+   "auc": 0.998,
+   "recall_at_1pct_fpr": 0.992
+  },
+  {
+   "removed": "HTML",
+   "auc": 0.9987,
+   "recall_at_1pct_fpr": 0.9831
+  },
+  {
+   "removed": "wording",
+   "auc": 0.9993,
+   "recall_at_1pct_fpr": 0.9938
+  },
+  {
+   "removed": "sender",
+   "auc": 0.9979,
+   "recall_at_1pct_fpr": 0.9795
+  },
+  {
+   "removed": "attachments",
+   "auc": 0.9994,
+   "recall_at_1pct_fpr": 0.9929
+  }
+ ],
+ "drift": [
+  {
+   "bucket": 1,
+   "n": 141,
+   "year_median": 2025.0,
+   "sample_from": 6386,
+   "sample_to": 7880,
+   "recall_at_05": 0.9858,
+   "recall_at_1pct_fpr": 0.9858
+  },
+  {
+   "bucket": 2,
+   "n": 141,
+   "year_median": 2025.0,
+   "sample_from": 7883,
+   "sample_to": 9033,
+   "recall_at_05": 0.9787,
+   "recall_at_1pct_fpr": 0.9787
+  },
+  {
+   "bucket": 3,
+   "n": 140,
+   "year_median": 2026.0,
+   "sample_from": 9038,
+   "sample_to": 10758,
+   "recall_at_05": 0.9571,
+   "recall_at_1pct_fpr": 0.9714
+  },
+  {
+   "bucket": 4,
+   "n": 140,
+   "year_median": 2026.0,
+   "sample_from": 10772,
+   "sample_to": 12808,
+   "recall_at_05": 0.9857,
+   "recall_at_1pct_fpr": 0.9857
+  }
+ ],
+ "drift_train_years": [
+  2022.0,
+  2024.0,
+  2026.0
+ ],
+ "spam_flagged_at_05": 0.518,
+ "n_spam": 556,
+ "example": {
+  "score": 0.97,
+  "reasons": [
+   [
+    "HTML size relative to visible text",
+    3.513,
+    10.35
+   ],
+   [
+    "HTML with no plain-text part",
+    1.0,
+    4.207
+   ],
+   [
+    "number of HTML links",
+    4.0,
+    2.005
+   ],
+   [
+    "number of images",
+    1.0,
+    1.585
+   ],
+   [
+    "number of links",
+    4.0,
+    0.885
+   ],
+   [
+    "Return-Path on another domain",
+    1.0,
+    -0.85
+   ],
+   [
+    "urgency wording",
+    0.0,
+    -0.595
+   ],
+   [
+    "hidden text (display:none / size 0)",
+    0.0,
+    -0.56
+   ]
+  ],
+  "words": [
+   "your",
+   "you",
+   "unsubscribe",
+   "receive",
+   "to receive"
+  ]
+ },
+ "n": {
+  "ham_easy": 2195,
+  "phishing": 1124,
+  "ham_hard": 233
+ },
+ "run_time_s": 32
+}

